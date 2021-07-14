@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点赞</title>
+    <style>
+        .position-center {
+            position: relative;
+            width: 40px;
+            height: 60px;
+            margin: 0 auto;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .move {
+            position: absolute;
+            top: -23px;
+            left: -18px;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            background: url('./dz.png') no-repeat 0 0;
+            background-size: auto 80px;
+        }
+
+        .hover-box:hover {
+            animation: hoverCur .9s infinite;
+        }
+
+        @keyframes hoverCur {
+            0% {
+                transform: rotate(0);
+                transform-origin: left bottom;
+            }
+
+            50% {
+                transform: rotate(8deg);
+                transform-origin: left bottom;
+            }
+
+            100% {
+                transform: rotate(-3deg);
+                transform-origin: left bottom;
+            }
+        }
+
+        @keyframes heiheihei {
+            100% {
+                background-position: -2160px 0;
+                overflow: hidden;
+            }
+        }
+
+        .dianzan {
+            animation: heiheihei .9s;
+            animation-timing-function: steps(27);
+            animation-fill-mode: forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="position-center">
+        <span class="move hover-box"></span>
+    </div>
+    <script>
+        let btn = document.querySelector('.move')
+        btn.addEventListener('click', () => {
+            let classNames = btn.getAttribute('class')
+            // console.log(classNames)
+            if(classNames.indexOf('dianzan')=='-1'){
+                btn.className = 'move dianzan'
+            }else {
+                btn.className = 'move hover-box'
+            }
+        })
+    </script>
+</body>
+
+</html>
